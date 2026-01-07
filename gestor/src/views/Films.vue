@@ -107,7 +107,17 @@ function cogerSeleccionado(film) {
 <template>
   <h2>Top Películas Anime</h2>
   <FilmDetail v-for="film in filmsArray" :key="film.id" :film="film" @selected="cogerSeleccionado" />
-   <div v-if="elementoSeleccionado"></div> 
+   <div v-if="elementoSeleccionado">
+    <h2>Detalle de la película:</h2>
+    <h3>{{ elementoSeleccionado.titulo }}</h3>
+    <img :src="elementoSeleccionado.imagen" alt="Imagen de la película">
+    <p><strong>Año:</strong> {{ elementoSeleccionado.año }}</p>
+    <p><strong>Género:</strong> </p>
+    <ul>
+      <li v-for="gen in elementoSeleccionado.genero" :key="gen">{{ gen }}</li>
+    </ul>
+    <p><strong>Sinopsis:</strong> {{ elementoSeleccionado.sinopsis }}</p>
+   </div> 
 </template>
 
 <style scoped>
