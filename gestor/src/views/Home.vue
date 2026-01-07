@@ -6,7 +6,7 @@
 
       <div class="text-content">
         <h1>Explora lo mejor del <span class="highlight">anime</span></h1>
-        <p class="subtitle">Top 10 mejores películas</p>
+        <p class="subtitle">Top 10 mejores películas y series</p>
       </div>
 
       <div class="image-wrapper">
@@ -20,6 +20,9 @@
       <div class="action-area">
         <router-link to="/films" class="btn-primary">
           Ver todas las películas
+        </router-link>
+        <router-link to="/series" class="btn-primary">
+          Ver todas las series
         </router-link>
       </div>
     </div>
@@ -60,7 +63,6 @@ h1 {
   letter-spacing: -0.02em;
 }
 
-/* El toque naranja de la paleta original, usado como acento */
 .highlight {
   color: #d348e8;
   position: relative;
@@ -113,6 +115,7 @@ h1 {
   text-decoration: none;
   transition: all 0.2s ease;
   box-shadow: 0 4px 6px rgba(230, 126, 34, 0.2);
+  margin-right: 10px;
 }
 
 .btn-primary:hover {

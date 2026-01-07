@@ -19,6 +19,18 @@ const router = createRouter({
       component: () => import('@/views/FilmDetail.vue'),
       props: true
     },
+     {
+      path: "/series",
+      name: "Series",
+      component: () => import('@/views/Series.vue'),
+      props: true
+    },
+     {
+      path: "/serie/:id",
+      name: "Serie",
+      component: () => import('@/views/SerieDetail.vue'),
+      props: true
+    },
   ],
 })
 

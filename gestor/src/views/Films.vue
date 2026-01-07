@@ -96,7 +96,6 @@ const filmsArray = ref( [
     },
   ],
 ]);
-provide("listaFilms", filmsArray);
 
 const elementoSeleccionado = ref(null);
 function cogerSeleccionado(film) {
@@ -106,23 +105,77 @@ function cogerSeleccionado(film) {
 
 <template>
   <h2>Top Películas Anime</h2>
-  <FilmDetail v-for="film in filmsArray" :key="film.id" :film="film" @selected="cogerSeleccionado" />
-   <div v-if="elementoSeleccionado">
-    <h2>Detalle de la película:</h2>
-    <h3>{{ elementoSeleccionado.titulo }}</h3>
-    <img :src="elementoSeleccionado.imagen" alt="Imagen de la película">
+
+  <div class="films-grid">
+    <FilmDetail
+      v-for="film in filmsArray[0]"
+      :key="film.id"
+      :film="film"
+      @selected="cogerSeleccionado"
+    />
+  </div>
+
+  <div v-if="elementoSeleccionado" class="film-selected">
+    <h2>{{ elementoSeleccionado.titulo }}</h2>
+    <img :src="elementoSeleccionado.imagen" />
     <p><strong>Año:</strong> {{ elementoSeleccionado.año }}</p>
-    <p><strong>Género:</strong> </p>
+
     <ul>
-      <li v-for="gen in elementoSeleccionado.genero" :key="gen">{{ gen }}</li>
+      <li v-for="gen in elementoSeleccionado.genero" :key="gen">
+        {{ gen }}
+      </li>
     </ul>
-    <p><strong>Sinopsis:</strong> {{ elementoSeleccionado.sinopsis }}</p>
-   </div> 
+
+    <p>{{ elementoSeleccionado.sinopsis }}</p>
+  </div>
 </template>
 
+
 <style scoped>
-    h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    }
+h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.films-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
+  margin-bottom: 40px;
+}
+
+/* Detalle seleccionado */
+.film-selected {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.film-selected img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.film-selected ul {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.film-selected li {
+  background: #e0e7ff;
+  color: #aa49e4;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
 </style>

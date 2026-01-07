@@ -1,6 +1,4 @@
 <script setup>
-import { ref, provide } from "vue";
-
 </script>
 
 <template>
@@ -14,6 +12,7 @@ import { ref, provide } from "vue";
       <div class="nav-links">
         <router-link to="/">Home</router-link>
         <router-link to="/films">Films</router-link>
+        <router-link to="/series">Series</router-link>
       </div>
     </nav>
 
